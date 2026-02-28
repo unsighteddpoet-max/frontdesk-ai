@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FrontDesk AI</title>
+
+  <!-- Live modern font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0b0f1a;
+      --accent: #6366f1;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: radial-gradient(circle at top, #111827, var(--bg));
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    .container {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 20px;
+      animation: fadeIn 1.2s ease forwards;
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 4vw, 3.5rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 16px;
+      animation: slideUp 1s ease forwards;
+    }
+
+    p {
+      max-width: 720px;
+      font-size: 1.1rem;
+      color: var(--muted);
+      text-align: center;
+      line-height: 1.6;
+      animation: slideUp 1.2s ease forwards;
+    }
+
+    .buttons {
+      margin-top: 40px;
+      display: flex;
+      gap: 16px;
+      animation: slideUp 1.4s ease forwards;
+    }
+
+    .btn {
+      padding: 14px 28px;
+      border-radius: 999px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn.primary {
+      background: linear-gradient(135deg, var(--accent), #8b5cf6);
+      color: white;
+    }
+
+    .btn.secondary {
+      border: 1px solid var(--accent);
+      color: var(--text);
+      background: transparent;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 15px 40px rgba(99,102,241,0.35);
+    }
+
+    .glow {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: var(--accent);
+      filter: blur(120px);
+      opacity: 0.15;
+      animation: float 8s ease-in-out infinite;
+    }
+
+    .glow.one {
+      top: 10%;
+      left: 20%;
+    }
+
+    .glow.two {
+      bottom: 15%;
+      right: 15%;
+      animation-delay: 3s;
+    }
+
+    footer {
+      margin-top: 80px;
+      font-size: 0.85rem;
+      color: #6b7280;
+      animation: fadeIn 2s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0 }
+      to { opacity: 1 }
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) }
+      50% { transform: translateY(-30px) }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ambient glows -->
+  <div class="glow one"></div>
+  <div class="glow two"></div>
+
+  <main class="container">
+    <h1>Your Smart Front Desk, Available 24/7</h1>
+    <p>
+      FrontDesk AI instantly answers inquiries, manages bookings, and supports your customers —
+      delivering fast, professional service even while you’re offline.
+    </p>
+
+    <div class="buttons">
+      <a href="#" class="btn primary">Get Started</a>
+      <a href="#" class="btn secondary">View Plans</a>
+    </div>
+
+    <footer>
+      © 2026 FrontDesk AI · Smart Support. Real Results.
+    </footer>
+  </main>
+
+</body>
+</html>
