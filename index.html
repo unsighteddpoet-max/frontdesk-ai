@@ -1,142 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>FrontDesk AI</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    /* GENERAL STYLES */
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #0f172a;
-      color: #e5e7eb;
-      scroll-behavior: smooth;
-    }
-    h1, h2, h3 { margin: 0 0 10px; }
-    p { color: #cbd5f5; line-height: 1.6; }
-    a { text-decoration: none; font-weight: bold; }
-    .buttons a, .plan a, #get-started a, .contact-options a, button {
-      display: inline-block;
-      margin: 10px;
-      padding: 12px 26px;
-      border-radius: 30px;
-      text-align: center;
-      cursor: pointer;
-    }
-
-    /* BUTTON STYLES */
-    .btn.primary { background: #f1f5f9; color: #0f172a; }
-    .btn.secondary { background: transparent; color: #f1f5f9; border: 2px solid #f1f5f9; }
-
-    /* HERO SECTION */
-    .hero { text-align: center; padding: 80px 20px; }
-
-    /* PRICING SECTION */
-    #pricing { padding: 60px 20px; background: #1e293b; text-align: center; }
-    .plans { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
-    .plan { background: #0f172a; padding: 20px; border-radius: 15px; width: 250px; color: #f1f5f9; }
-    .plan ul { list-style: none; padding: 0; text-align: left; }
-    .plan ul li { margin-bottom: 8px; }
-    .plan a { background: #f1f5f9; color: #0f172a; margin-top: 15px; border-radius: 25px; display: block; text-align: center; }
-
-    /* GET STARTED SECTION */
-    #get-started { padding: 60px 20px; text-align: center; background: #0f172a; }
-    #get-started a { background: #f1f5f9; color: #0f172a; margin-top: 10px; border-radius: 30px; display: inline-block; padding: 12px 26px; }
-    .contact-options { margin-top: 20px; }
-    .contact-options a { margin: 5px; background: #1e293b; color: #f1f5f9; border: 2px solid #f1f5f9; padding: 10px 20px; border-radius: 25px; }
-
-    /* CONTACT FORM STYLES */
-    form { margin-top: 20px; display: flex; flex-direction: column; align-items: center; }
-    input, textarea { width: 300px; max-width: 90%; margin: 5px 0; padding: 10px; border-radius: 10px; border: none; }
-    textarea { resize: vertical; min-height: 100px; }
-    button.submit { background: #f1f5f9; color: #0f172a; border: none; border-radius: 25px; padding: 12px 26px; margin-top: 10px; font-weight: bold; cursor: pointer; }
-  </style>
+<meta charset="UTF-8">
+<title>FrontDesk AI</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body { margin:0; font-family: Arial,sans-serif; background:#0f172a; color:#e5e7eb; scroll-behavior: smooth;}
+h1,h2,h3{margin:0 0 10px;} p{color:#cbd5f5; line-height:1.6;} a{text-decoration:none;font-weight:bold;}
+.buttons a,.plan a,#get-started a,.contact-options a,button{display:inline-block;margin:10px;padding:12px 26px;border-radius:30px;text-align:center;cursor:pointer;}
+.btn.primary{background:#f1f5f9;color:#0f172a;} .btn.secondary{background:transparent;color:#f1f5f9;border:2px solid #f1f5f9;}
+.hero{text-align:center;padding:80px 20px;}
+#pricing{padding:60px 20px;background:#1e293b;text-align:center;}
+.plans{display:flex;flex-wrap:wrap;justify-content:center;gap:20px;}
+.plan{background:#0f172a;padding:20px;border-radius:15px;width:250px;color:#f1f5f9;}
+.plan ul{list-style:none;padding:0;text-align:left;} .plan ul li{margin-bottom:8px;}
+.plan a{background:#f1f5f9;color:#0f172a;margin-top:15px;border-radius:25px;display:block;text-align:center;}
+#get-started{padding:60px 20px;text-align:center;background:#0f172a;}
+#get-started a{background:#f1f5f9;color:#0f172a;margin-top:10px;border-radius:30px;display:inline-block;padding:12px 26px;}
+.contact-options{margin-top:20px;}
+.contact-options a{margin:5px;background:#1e293b;color:#f1f5f9;border:2px solid #f1f5f9;padding:10px 20px;border-radius:25px;}
+form{margin-top:20px;display:flex;flex-direction:column;align-items:center;}
+input,textarea{width:300px;max-width:90%;margin:5px 0;padding:10px;border-radius:10px;border:none;}
+textarea{resize:vertical;min-height:100px;}
+button.submit{background:#f1f5f9;color:#0f172a;border:none;border-radius:25px;padding:12px 26px;margin-top:10px;font-weight:bold;cursor:pointer;}
+/* AI CHAT WIDGET */
+#ai-chat {position:fixed;bottom:20px;right:20px;width:300px;max-width:90%;background:#1e293b;border-radius:15px;display:flex;flex-direction:column;box-shadow:0 4px 12px rgba(0,0,0,0.4);}
+#ai-header {background:#0f172a;padding:10px;border-top-left-radius:15px;border-top-right-radius:15px;text-align:center;color:#f1f5f9;font-weight:bold;cursor:pointer;}
+#ai-messages{padding:10px;height:250px;overflow-y:auto;}
+.message{margin:5px 0;padding:8px 12px;border-radius:15px;max-width:80%;}
+.user-msg{background:#f1f5f9;color:#0f172a;margin-left:auto;}
+.ai-msg{background:#374151;color:#f1f5f9;margin-right:auto;}
+.typing {font-style:italic;color:#94a3b8;margin-right:auto;}
+#ai-input{display:flex;padding:10px;border-top:1px solid #374151;}
+#ai-input input{flex:1;padding:8px;border-radius:15px;border:none;margin-right:5px;}
+#ai-input button{padding:8px 12px;border-radius:15px;border:none;background:#f1f5f9;color:#0f172a;font-weight:bold;cursor:pointer;}
+</style>
 </head>
 <body>
 
-  <!-- HERO SECTION -->
-  <section class="hero">
-    <h1>Your Smart Front Desk, Available 24/7</h1>
-    <p>
-      FrontDesk AI instantly answers inquiries, manages bookings, and supports your customers —
-      delivering fast, professional service even while you’re offline.
-    </p>
-    <div class="buttons">
-      <a href="#get-started" class="btn primary">Get Started</a>
-      <a href="#pricing" class="btn secondary">View Plans</a>
-    </div>
-  </section>
+<!-- HERO SECTION -->
+<section class="hero">
+<h1>Your Smart Front Desk, Available 24/7</h1>
+<p>FrontDesk AI instantly answers inquiries, manages bookings, and supports your customers — delivering fast, professional service even while you’re offline.</p>
+<div class="buttons">
+<a href="#get-started" class="btn primary">Get Started</a>
+<a href="#pricing" class="btn secondary">View Plans</a>
+</div>
+</section>
 
-  <!-- PRICING SECTION -->
-  <section id="pricing">
-    <h2 style="font-size:2.5rem; color:#f8fafc; margin-bottom:40px;">Our Plans</h2>
-    <div class="plans">
-      <!-- LIGHT PLAN -->
-      <div class="plan">
-        <h3>Light</h3>
-        <p>Perfect for personal use</p>
-        <p><strong>$17/month</strong></p>
-        <ul>
-          <li>✅ Free Domain</li>
-          <li>✅ Remove Ads</li>
-          <li>✅ 1 GB Storage</li>
-        </ul>
-        <!-- M-Pesa Pay link -->
-        <a href="https://mpesa-link.com/pay?amount=17&phone=0731268318" target="_blank">Pay $17 via M-Pesa</a>
-      </div>
+<!-- PRICING SECTION -->
+<section id="pricing">
+<h2 style="font-size:2.5rem; color:#f8fafc; margin-bottom:40px;">Our Plans</h2>
+<div class="plans">
+<div class="plan">
+<h3>Light</h3>
+<p>Perfect for personal use</p>
+<p><strong>$17/month</strong></p>
+<ul>
+<li>✅ Free Domain</li>
+<li>✅ Remove Ads</li>
+<li>✅ 1 GB Storage</li>
+</ul>
+<a href="#" target="_blank">Pay $17 via M-PESA</a>
+</div>
+<div class="plan">
+<h3>Core</h3>
+<p>Most popular for small businesses</p>
+<p><strong>$29/month</strong></p>
+<ul>
+<li>✅ Free Domain</li>
+<li>✅ Remove Ads</li>
+<li>✅ 5 GB Storage</li>
+<li>✅ Payments & Scheduling</li>
+</ul>
+<a href="#" target="_blank">Pay $29 via M-PESA</a>
+</div>
+<div class="plan">
+<h3>Business</h3>
+<p>Advanced features for growing businesses</p>
+<p><strong>$39/month</strong></p>
+<ul>
+<li>✅ Free Domain</li>
+<li>✅ Remove Ads</li>
+<li>✅ 10 GB Storage</li>
+<li>✅ Payments, Scheduling & Marketing Tools</li>
+</ul>
+<a href="#" target="_blank">Pay $39 via M-PESA</a>
+</div>
+</div>
+</section>
 
-      <!-- CORE PLAN -->
-      <div class="plan">
-        <h3>Core</h3>
-        <p>Most popular for small businesses</p>
-        <p><strong>$29/month</strong></p>
-        <ul>
-          <li>✅ Free Domain</li>
-          <li>✅ Remove Ads</li>
-          <li>✅ 5 GB Storage</li>
-          <li>✅ Payments & Scheduling</li>
-        </ul>
-        <!-- M-Pesa Pay link -->
-        <a href="https://mpesa-link.com/pay?amount=29&phone=0731268318" target="_blank">Pay $29 via M-Pesa</a>
-      </div>
+<!-- GET STARTED SECTION -->
+<section id="get-started">
+<h2 style="font-size:2rem; color:#f1f5f9;">Get Started with FrontDesk AI</h2>
+<p style="color:#cbd5f5;">Fill out the form or contact us instantly via WhatsApp or Call:</p>
+<form action="https://formspree.io/f/your-form-id" method="POST">
+<input type="text" name="Name" placeholder="Your Name" required>
+<input type="email" name="Email" placeholder="Your Email" required>
+<textarea name="Message" placeholder="Your Message" required></textarea>
+<button type="submit" class="submit">Send Message</button>
+</form>
+<div class="contact-options">
+<a href="https://wa.me/254731268318" target="_blank">WhatsApp</a>
+<a href="tel:+254731268318">Call</a>
+</div>
+</section>
 
-      <!-- BUSINESS PLAN -->
-      <div class="plan">
-        <h3>Business</h3>
-        <p>Advanced features for growing businesses</p>
-        <p><strong>$39/month</strong></p>
-        <ul>
-          <li>✅ Free Domain</li>
-          <li>✅ Remove Ads</li>
-          <li>✅ 10 GB Storage</li>
-          <li>✅ Payments, Scheduling & Marketing Tools</li>
-        </ul>
-        <!-- M-Pesa Pay link -->
-        <a href="https://mpesa-link.com/pay?amount=39&phone=0731268318" target="_blank">Pay $39 via M-Pesa</a>
-      </div>
-    </div>
-  </section>
+<!-- AI CHAT WIDGET -->
+<div id="ai-chat">
+<div id="ai-header">Chat with FrontDesk AI</div>
+<div id="ai-messages"></div>
+<div id="ai-input">
+<input type="text" id="user-input" placeholder="Type your message...">
+<button id="send-btn">Send</button>
+</div>
+</div>
 
-  <!-- GET STARTED SECTION -->
-  <section id="get-started">
-    <h2 style="font-size:2rem; color:#f1f5f9;">Get Started with FrontDesk AI</h2>
-    <p style="color:#cbd5f5;">Fill out the form or contact us instantly via WhatsApp or Call:</p>
+<script>
+// Chat toggle
+const chatHeader = document.getElementById('ai-header');
+const messages = document.getElementById('ai-messages');
+const input = document.getElementById('user-input');
+const sendBtn = document.getElementById('send-btn');
 
-    <!-- CONTACT FORM -->
-    <form action="https://formspree.io/f/your-form-id" method="POST">
-      <input type="text" name="Name" placeholder="Your Name" required>
-      <input type="email" name="Email" placeholder="Your Email" required>
-      <textarea name="Message" placeholder="Your Message" required></textarea>
-      <button type="submit" class="submit">Send Message</button>
-    </form>
+chatHeader.addEventListener('click', () => {
+messages.style.display = messages.style.display === 'none' ? 'block' : 'none';
+document.getElementById('ai-input').style.display = document.getElementById('ai-input').style.display === 'none' ? 'flex' : 'none';
+});
 
-    <!-- CONTACT OPTIONS -->
-    <div class="contact-options">
-      <a href="https://wa.me/254731268318" target="_blank">WhatsApp</a>
-      <a href="tel:+254731268318">Call</a>
-    </div>
-  </section>
+// Add message to chat
+function appendMessage(text, sender) {
+const div = document.createElement('div');
+div.classList.add('message');
+div.classList.add(sender === 'user' ? 'user-msg' : 'ai-msg');
+div.textContent = text;
+messages.appendChild(div);
+messages.scrollTop = messages.scrollHeight;
+}
+
+// Add typing indicator
+function showTyping() {
+const typing = document.createElement('div');
+typing.classList.add('message', 'typing');
+typing.textContent = 'FrontDesk AI is typing...';
+messages.appendChild(typing);
+messages.scrollTop = messages.scrollHeight;
+return typing;
+}
+
+// Send message
+sendBtn.addEventListener('click', () => {
+const userMessage = input.value.trim();
+if(!userMessage) return;
+appendMessage(userMessage, 'user');
+input.value = '';
+
+const typingIndicator = showTyping();
+
+// Call AI endpoint
+fetch('YOUR_AI_EMPLOYEE_API_ENDPOINT', {
+method:'POST',
+headers:{'Content-Type':'application/json'},
+body: JSON.stringify({message: userMessage})
+})
+.then(res=>res.json())
+.then(data=>{
+typingIndicator.remove();
+if(data.reply) appendMessage(data.reply,'ai'); // AI response
+else appendMessage('I’m forwarding your request to the human assistant. You’ll hear back soon.','ai'); // fallback
+})
+.catch(()=>{
+typingIndicator.remove();
+appendMessage('Sorry, something went wrong!','ai');
+});
+});
+
+// Enter key sends message
+input.addEventListener('keypress', (e)=>{ if(e.key==='Enter'){sendBtn.click();} });
+</script>
 
 </body>
 </html>
