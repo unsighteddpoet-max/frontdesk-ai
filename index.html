@@ -155,7 +155,119 @@
       <a href="#" class="btn primary">Get Started</a>
       <a href="#" class="btn secondary">View Plans</a>
     </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>FrontDesk AI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: #e5e7eb;
+      scroll-behavior: smooth;
+    }
+    h1, h2, h3 {
+      margin: 0 0 10px;
+    }
+    p {
+      color: #cbd5f5;
+      line-height: 1.6;
+    }
+    .buttons a, .plan a, #get-started a {
+      display: inline-block;
+      margin: 10px;
+      padding: 12px 26px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .btn.primary { background: #f1f5f9; color: #0f172a; }
+    .btn.secondary { background: transparent; color: #f1f5f9; border: 2px solid #f1f5f9; }
+    /* Hero Section */
+    .hero { text-align: center; padding: 80px 20px; }
+    /* Pricing Section */
+    #pricing { padding: 60px 20px; background: #1e293b; text-align: center; }
+    .plans { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
+    .plan { background: #0f172a; padding: 20px; border-radius: 15px; width: 250px; color: #f1f5f9; }
+    .plan ul { list-style: none; padding: 0; text-align: left; }
+    .plan ul li { margin-bottom: 8px; }
+    .plan a { background: #f1f5f9; color: #0f172a; margin-top: 15px; border-radius: 25px; }
+    /* Get Started Section */
+    #get-started { padding: 60px 20px; text-align: center; background: #0f172a; }
+  </style>
+</head>
+<body>
 
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Your Smart Front Desk, Available 24/7</h1>
+    <p>
+      FrontDesk AI instantly answers inquiries, manages bookings, and supports your customers —
+      delivering fast, professional service even while you’re offline.
+    </p>
+    <div class="buttons">
+      <a href="#get-started" class="btn primary">Get Started</a>
+      <a href="#pricing" class="btn secondary">View Plans</a>
+    </div>
+  </section>
+
+  <!-- Pricing Plans Section -->
+  <section id="pricing">
+    <h2 style="font-size:2.5rem; color:#f8fafc; margin-bottom:40px;">Our Plans</h2>
+    <div class="plans">
+      <!-- Light Plan -->
+      <div class="plan">
+        <h3>Light</h3>
+        <p>Perfect for personal use</p>
+        <p><strong>$17/month</strong></p>
+        <ul>
+          <li>✅ Free Domain</li>
+          <li>✅ Remove Ads</li>
+          <li>✅ 1 GB Storage</li>
+        </ul>
+        <a href="#get-started">Choose Plan</a>
+      </div>
+      <!-- Core Plan -->
+      <div class="plan">
+        <h3>Core</h3>
+        <p>Most popular for small businesses</p>
+        <p><strong>$29/month</strong></p>
+        <ul>
+          <li>✅ Free Domain</li>
+          <li>✅ Remove Ads</li>
+          <li>✅ 5 GB Storage</li>
+          <li>✅ Payments & Scheduling</li>
+        </ul>
+        <a href="#get-started">Choose Plan</a>
+      </div>
+      <!-- Business Plan -->
+      <div class="plan">
+        <h3>Business</h3>
+        <p>Advanced features for growing businesses</p>
+        <p><strong>$39/month</strong></p>
+        <ul>
+          <li>✅ Free Domain</li>
+          <li>✅ Remove Ads</li>
+          <li>✅ 10 GB Storage</li>
+          <li>✅ Payments, Scheduling & Marketing Tools</li>
+        </ul>
+        <a href="#get-started">Choose Plan</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Get Started Section -->
+  <section id="get-started">
+    <h2 style="font-size:2rem; color:#f1f5f9;">Get Started with FrontDesk AI</h2>
+    <p style="color:#cbd5f5;">Contact us to activate your AI front desk instantly.</p>
+    <a href="https://wa.me/254700000000" target="_blank">Contact via WhatsApp</a>
+  </section>
+
+</body>
+</html>
     <footer>
       © 2026 FrontDesk AI · Smart Support. Real Results.
     </footer>
