@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -159,7 +158,7 @@ input.value = '';
 const typingIndicator = showTyping();
 
 // Call AI endpoint
-fetch('YOUR_AI_EMPLOYEE_API_ENDPOINT', {
+fetch('/api/chat', {
 method:'POST',
 headers:{'Content-Type':'application/json'},
 body: JSON.stringify({message: userMessage})
@@ -167,8 +166,8 @@ body: JSON.stringify({message: userMessage})
 .then(res=>res.json())
 .then(data=>{
 typingIndicator.remove();
-if(data.reply) appendMessage(data.reply,'ai'); // AI response
-else appendMessage('I’m forwarding your request to the human assistant. You’ll hear back soon.','ai'); // fallback
+if(data.reply) appendMessage(data.reply,'ai');
+else appendMessage('I’m forwarding your request to the human assistant. You’ll hear back soon.','ai');
 })
 .catch(()=>{
 typingIndicator.remove();
